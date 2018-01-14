@@ -1,0 +1,120 @@
+import java.util.Scanner;
+import java.util.Random;
+/*Author: Darron Smallwood
+ * Version: January 12, 2018
+ * Description: Program simulates rock/paper/scissor game
+ */
+
+
+public class Main {
+
+	public static void main (String args[]){
+		
+		//Vars
+		String playerDecision2 = null, cpuChoice2 = null, playerName;
+		
+		int cpuChoice,playerDecision;
+		int playerScore = 0; 
+		int cpuScore = 0;
+		int tracker = 0;
+		int playerChoice = 0;
+		
+		Scanner userinput = new Scanner(System.in);
+		Random generator = new Random();
+	
+		
+		System.out.println("Welcome to Rock, Paper, Scissors. In this game you will play aganist the CPU in an effort to beat it.");
+		do{
+			//Player's Decision
+			System.out.println("Type in your choice: Rock = 1, Paper = 2 or Scissors = 3");
+			playerDecision = userinput.nextInt();
+			//Part 1
+			if(playerDecision == 1){
+				playerDecision2 = "rock";
+				System.out.println("You have selected rock as your choice.");
+			}
+			//Part 2
+			else if(playerDecision == 2){
+				System.out.println("You have selected paper as your choice.");
+				playerDecision2 = "paper";
+			}
+			//Part 3
+			else if(playerDecision == 3){
+				System.out.println("You have selected scissors as your choice.");
+				playerDecision2 = "scissors";	
+			}
+			//CPU selects a random number, which is converted into a string to contain a decision.
+			cpuChoice = generator.nextInt(3) + 1;
+
+			if(cpuChoice == 1){
+				cpuChoice2 = "rock";
+				System.out.println("The CPU has selected " +cpuChoice2+ " as their choice.");
+			}
+			
+			else if(cpuChoice == 2){
+				cpuChoice2 = "paper";
+				System.out.println("The CPU has selected " +cpuChoice2+ " as their choice.");
+			}
+			
+			else if(cpuChoice == 3){
+				cpuChoice2 = "scissors";
+				System.out.println("The CPU has selected " +cpuChoice2+ " as their choice.");
+			}
+			
+			//Decisions to see the winner
+			//Winning Scenarios
+			if(playerDecision2 == "scissors" && cpuChoice2 == "paper"){
+				System.out.println("Nice you beat the computer.");
+				playerScore++;
+				tracker++;
+				System.out.println("Current scores. Player: " +playerScore+ " CPU: " +cpuScore);
+				System.out.println("Would you like to play agian? Input 1 for yes, any other number for no.");
+				playerChoice = userinput.nextInt();
+			}
+			
+			else if(playerDecision2 == "paper" && cpuChoice2 == "rock"){
+				System.out.println("Nice you beat the computer.");
+				playerScore++;
+				tracker++;
+				System.out.println("Current scores. Player: " +playerScore+ " CPU: " +cpuScore);
+				System.out.println("Would you like to play agian? Input 1 for yes, any other number for no.");
+				playerChoice = userinput.nextInt();
+			}
+			
+			else if(playerDecision2 == "rock" && cpuChoice2 == "scissors"){
+				System.out.println("Nice you beat the computer.");
+				playerScore++;
+				tracker++;
+				System.out.println("Would you like to play agian? Input 1 for yes, any other number for no.");
+				playerChoice = userinput.nextInt();
+			}
+			
+			//Tie scenario, which will force a automatic loop by changing a var.
+			else if(playerDecision2 == cpuChoice2){
+				System.out.println("We have a tie. We will play the game again.");
+				System.out.println("Current scores. Player: " +playerScore+ " CPU: " +cpuScore);
+				playerChoice = 1;
+				tracker++;
+			}
+			//Losing scenarios
+			else{
+				System.out.println("Sorry the computer defeated you.");
+				cpuScore++;
+				System.out.println("Current scores. Player: " +playerScore+ " CPU: " +cpuScore);
+				System.out.println("Would you like to play agian? Input 1 for yes, any other number for no.");
+				playerChoice = userinput.nextInt();
+				
+			}
+			
+			
+		}while(playerChoice == 1 );
+		
+		System.out.println("Thank you for playing!");
+		System.out.println("Here are the final scores.");
+		System.out.println("Player: " +playerScore+ " CPU: " +cpuScore);
+
+		
+		
+	}
+	
+	}
